@@ -1,0 +1,48 @@
+:root {
+}
+
+body {
+  margin: 0;
+}
+
+#container {
+  padding: 0 50px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+#header {
+  background-color: lightpink;
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 50px;
+}
+
+#sidebar {
+  margin: 0;
+  padding: 30px;
+  background-color: lightblue;
+}
+
+#sidebar > li {
+  list-style-type: none;
+  margin: 30px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+#sidebar > li:hover {
+  text-decoration: underline;
+}
+
+.content {
+  background-color: lightsalmon;
+}
+
+#footer {
+  background-color: lightcoral;
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 50px;
+}
