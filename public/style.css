@@ -1,48 +1,149 @@
 :root {
+    --width: 100%;
+    --bg: #283044;
+    --bg-panel: #36405a;
+    --headings: #afd8f1;
+    --text: #d7e9ee;
 }
 
 body {
-  margin: 0;
+    margin: 0;
+    font-family: 'Segoe UI';
+    background-color: var(--bg);
+}
+
+h1,
+h2,
+p {
+    margin: 0;
 }
 
 #container {
-  padding: 0 50px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 1fr auto;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 50px auto 1fr 50px;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
 }
 
 #header {
-  background-color: lightpink;
-  grid-column: 1/-1;
-  text-align: center;
-  padding: 50px;
+    background-color: var(--headings);
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 20px;
+}
+
+#header h1 {
+    margin-bottom: 15px;
 }
 
 #sidebar {
-  margin: 0;
-  padding: 30px;
-  background-color: lightblue;
+    grid-column: 2;
+    padding: 30px;
+    background-color: var(--bg-panel);
+    color: var(--headings);
 }
 
-#sidebar > li {
-  list-style-type: none;
-  margin: 30px;
-  cursor: pointer;
-  width: fit-content;
+#sidebar > div.sticky {
+    top: 30px;
+    position: sticky;
+}
+
+#sidebar div.menu:not(.active) {
+    display: none;
+}
+
+#sidebar li {
+    list-style-type: none;
+    margin: 15px;
+    cursor: pointer;
+    width: fit-content;
 }
 
 #sidebar > li:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
-.content {
-  background-color: lightsalmon;
+#sidebar button {
+    display: block;
+    margin: 20px 0;
+}
+
+#main {
+    padding: 25px 0px 25px 50px;
+}
+
+.family {
+    background-color: var(--bg-panel);
+    padding: 30px 40px;
+    margin: 25px 0;
+    user-select: none;
+}
+
+.family label {
+    display: block;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.25s;
+    width: fit-content;
+    color: var(--headings);
+}
+
+.family > input[type='checkbox'] {
+    display: none;
+}
+
+.family > input[type='checkbox']:checked ~ label {
+    margin: 20px 10px 30px 10px;
+    font-size: 20px;
+}
+
+.family > input[type='checkbox']:checked ~ .specs {
+    max-height: fit-content;
+}
+
+.specs {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 0;
+}
+
+.specs > div {
+    margin: 10px;
+    padding: 20px;
+    background-color: var(--bg);
+    width: max(calc(var(--width) - 6px), 200px);
+    border: 3px solid transparent;
+    border-radius: 7.5px;
+}
+
+.specs div:not(.unmissable) {
+    cursor: pointer;
+}
+
+.specs p {
+    font-size: 14px;
+    color: var(--text);
+}
+
+.specs > div.unmissable {
+    border: 3px solid rgb(235, 42, 42);
+    cursor: not-allowed;
+}
+
+li.active {
+    text-decoration: underline;
+}
+
+.border {
+    border: 3px solid var(--headings) !important;
 }
 
 #footer {
-  background-color: lightcoral;
-  grid-column: 1/-1;
-  text-align: center;
-  padding: 50px;
+    background-color: var(--headings);
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 50px;
 }

@@ -1,6 +1,8 @@
 const express = require('express');
 const compression = require('compression');
 const app = express();
+const fs = require('fs');
+
 const PORT = 3000;
 
 const db = getBdd();
@@ -9,11 +11,11 @@ const options = {
     etag: true,
     setHeaders: function (res, path, stat) {
         res.set({
-            'Expires': new Date(Date.now() + 2592000000).toUTCString(),
-            'Cache-Control': path.includes('index.html') ? 'no-cache, max-age: 2592000' : 'public, max-age: 2592000'
+            Expires: new Date(Date.now() + 2592000000).toUTCString(),
+            'Cache-Control': path.includes('index.html') ? 'no-cache, max-age: 2592000' : 'public, max-age: 2592000',
         });
-    }
-}
+    },
+};
 
 app.use(compression());
 app.use(express.static('public', options));
@@ -24,6 +26,22 @@ app.get('/*', function (req, res, next) {
     next();
 });
 
+app.get('/family', function (req, res) {
+    let id = req.query.id.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (id !== '') {
+        console.log(id);
+        res.send(JSON.stringify(db[id]));
+    }
+});
+
+app.get('*', function (req, res) {
+    res.redirect('/');
+});
+
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`);
 });
+
+function getBdd() {
+    return JSON.parse(fs.readFileSync('data.json'));
+}

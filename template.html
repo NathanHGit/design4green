@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonnes pratiques</title>
+</head>
+
+<body>
+    <h1>Bonnes pratiques</h1>
+
+    <h2>Phases du projet</h2>
+
+    {{#each d}}
+    <h3>{{name}}</h3>
+    <ul>
+        {{#each data}}
+        <li>
+            <p>{{etp}}</p>
+            <p>{{dif}}</p>
+        </li>
+        {{/each}}
+    </ul>
+    {{/each}}
+
+    <p>Attention : Ces étapes sont non exhaustive. Il est tout à fait possible d'en rajouter</p>
+
+</body>
+
+</html>
