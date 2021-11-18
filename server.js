@@ -1,5 +1,6 @@
 const express = require('express');
 const compression = require('compression');
+const pdf = require('pdf-creator-node');
 const app = express();
 const fs = require('fs');
 
@@ -18,6 +19,7 @@ const options = {
 };
 
 app.use(compression());
+app.use(express.json());
 app.use(express.static('public', options));
 
 app.get('/*', function (req, res, next) {
@@ -29,19 +31,51 @@ app.get('/*', function (req, res, next) {
 app.get('/family', function (req, res) {
     let id = req.query.id;
     if (id !== '') {
-        console.log(id);
         res.send(JSON.stringify(db[id]));
     }
 });
 
-app.get('*', function (req, res) {
-    res.redirect('/');
+app.post('/pdf', function (req, res) {
+    let html = fs.readFileSync('./template.html', 'utf8');
+
+    let options = {
+        format: 'A4',
+        orientation: 'portrait',
+        border: '10mm',
+    };
+
+    let document = {
+        html: html,
+        data: {
+            d: req.body,
+        },
+        path: './bonnes_pratiques.pdf',
+    };
+
+    pdf.create(document, options)
+        .then((r) => {
+            res.sendFile('C:/Users/natha/Documents/GitHub/design4green/bonnes_pratiques.pdf', function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    fs.unlinkSync('./bonnes_pratiques.pdf');
+                }
+            });
+        })
+        .catch((error) => {
+            console.error(error);
+            res.end('Erreur pdf');
+        });
 });
+
+// app.get('*', function (req, res) {
+//     res.redirect('/');
+// });
 
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`);
 });
 
 function getBdd() {
-    return JSON.parse(fs.readFileSync('bdd.json'));
+    return JSON.parse(fs.readFileSync('data.json'));
 }

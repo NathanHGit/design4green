@@ -3,7 +3,7 @@
     --bg: #283044;
     --bg-panel: #36405a;
     --headings: #afd8f1;
-    --text: #d7e9ee;
+    --text: #f5f6f7;
 }
 
 body {
@@ -14,6 +14,7 @@ body {
 
 h1,
 h2,
+h3,
 p {
     margin: 0;
 }
@@ -27,21 +28,21 @@ p {
 }
 
 #header {
-    background-color: var(--headings);
     grid-column: 1/-1;
     text-align: center;
-    padding: 20px;
+    padding: 60px 50px 50px 50px;
+    color: var(--text);
 }
 
 #header h1 {
-    margin-bottom: 15px;
+    font-size: 50px;
+    margin-bottom: 30px;
 }
 
 #sidebar {
     grid-column: 2;
     padding: 30px;
     background-color: var(--bg-panel);
-    color: var(--headings);
 }
 
 #sidebar ul {
@@ -49,7 +50,8 @@ p {
 }
 
 #sidebar h2 {
-    margin-bottom: 20px;
+    margin: 20px 0;
+    color: var(--headings);
 }
 
 #sidebar > div.sticky {
@@ -59,7 +61,10 @@ p {
 
 #sidebar div.menu {
     overflow: hidden;
-    transition: max-height 0.5s;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
 }
 
 #sidebar div.menu:not(.active) {
@@ -73,32 +78,47 @@ p {
     width: fit-content;
 }
 
-#sidebar > li:hover {
+#sidebar li:not(.active):hover {
     text-decoration: underline;
 }
 
 #sidebar button {
     display: block;
-    margin: 20px 0;
+    margin: 10px 0;
+    background-color: transparent;
+    border: 2px solid var(--text);
+    color: var(--text);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.25s, background-color 0.25s;
+}
+
+#sidebar button:hover {
+    border: 2px solid var(--headings);
+    color: var(--headings);
 }
 
 #main {
-    padding: 25px 0px 25px 50px;
+    padding: 0px 0px 25px 50px;
 }
 
 .family {
     background-color: var(--bg-panel);
-    padding: 30px 40px;
+    padding: 20px 40px 10px 40px;
     margin: 25px 0;
     user-select: none;
 }
 
 .family h3 {
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     width: fit-content;
     color: var(--headings);
+    margin: 20px 0 30px 0;
 }
 
 .family > input[type='checkbox'] {
@@ -133,19 +153,24 @@ p {
 }
 
 .specs i {
-    display: block;
+    display: inline-block;
     font-style: normal;
     color: var(--text);
-    padding: 5px;
-    background-color: green;
-    margin: 5px 5px 5px 0;
+    padding: 5px 10px;
+    background-color: rgb(36, 131, 36);
+    margin: 5px 15px 5px 0;
     width: fit-content;
     font-size: 14px;
     border-radius: 5px;
 }
 
+.specs > div.unmissable i:nth-child(1) {
+    background-color: rgb(197, 57, 57) !important;
+}
+
 .specs p {
-    font-size: 14px;
+    padding-top: 7.5px;
+    font-size: 15px;
     color: var(--text);
 }
 
@@ -182,27 +207,110 @@ p {
 }
 
 li.active {
-    text-decoration: underline;
+    font-weight: bold;
+    color: var(--headings);
 }
 
 .border {
     border: 3px solid var(--headings) !important;
 }
 
-#footer {
-    background-color: var(--headings);
-    grid-column: 1/-1;
-    padding: 50px;
-    display: flex;
-    justify-content: center;
-}
-
-#footer a {
+.phase {
     color: var(--bg);
 }
 
+.phase h3 {
+    color: var(--text);
+}
+
+.phase {
+    padding-bottom: 20px;
+    page-break-inside: avoid;
+}
+
+.phase:nth-of-type(1) ul li {
+    background-color: hsl(10, 97%, 77%);
+}
+
+.phase:nth-of-type(2) ul li {
+    background-color: hsl(30, 85%, 75%);
+}
+
+.phase:nth-of-type(3) ul li {
+    background: hsl(50, 95%, 75%);
+}
+
+.phase:nth-of-type(4) ul li {
+    background: hsl(70, 100%, 75%);
+}
+
+.phase:nth-of-type(5) ul li {
+    background: hsl(90, 95%, 76%);
+}
+
+.phase:nth-of-type(6) ul li {
+    background: hsl(130, 95%, 75%);
+}
+
+.phase:nth-of-type(7) ul li {
+    background: hsl(149, 95%, 77%);
+}
+
+.phase:nth-of-type(8) ul li {
+    background: hsl(176, 100%, 78%);
+}
+
+.phase:nth-of-type(9) ul li {
+    background: hsl(204, 97%, 77%);
+}
+
+.phase:nth-of-type(10) ul li {
+    background: hsl(224, 100%, 81%);
+}
+
+#phase p {
+    margin: 0;
+}
+
+li {
+    margin: 0px 40px 10px 0px;
+    display: flex;
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 2px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+p {
+    display: inline;
+    padding: 2px;
+}
+
+.box {
+    margin-right: 5px !important;
+    border: solid 1px black;
+    border-radius: 2px;
+}
+
+#footer {
+    grid-column: 1/-1;
+    margin-top: 50px;
+    padding: 30px 0;
+    color: var(--headings);
+    font-size: 15px;
+    background-color: #23293a;
+    text-align: center;
+}
+
+#footer a {
+    color: var(--headings);
+}
+
 #footer > * {
-    margin: 0 100px;
+    margin: 10px;
 }
 
 #display {
@@ -218,7 +326,7 @@ li.active {
 
 #i_blocs,
 #i_lines {
-    background-color: var(--bg);
+    background-color: var(--text);
     position: relative;
     display: inline-block;
     width: 20px;
@@ -230,14 +338,14 @@ li.active {
 
 #i_blocs:hover,
 #i_lines:hover {
-    background-color: var(--bg-panel);
+    background-color: var(--headings);
 }
 
 #i_blocs::before,
 #i_blocs::after {
     position: absolute;
     content: '';
-    background-color: var(--headings);
+    background-color: var(--bg);
     height: 3px;
     width: 100%;
     top: 50%;
@@ -252,7 +360,7 @@ li.active {
 #i_lines::before {
     position: absolute;
     content: '';
-    background-color: var(--headings);
+    background-color: var(--bg);
     height: 4px;
     width: 100%;
     left: 0;

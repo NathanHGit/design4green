@@ -8,24 +8,144 @@
     <title>Bonnes pratiques</title>
 </head>
 
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        margin: 0;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    h3 {
+        border: solid 3px darkgray;
+        border-radius: 2px;
+        padding: 10px;
+        font-size: 130%;
+        box-shadow: -2px 1px 1px darkgray;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+    }
+
+    .space {
+        margin-bottom: 5px;
+    }
+
+    #phase {
+        padding-bottom: 20px;
+        page-break-inside: avoid;
+    }
+
+    #phase:nth-of-type(1) ul li {
+        background-color: hsl(10, 97%, 77%);
+    }
+
+    #phase:nth-of-type(2) ul li {
+        background-color: hsl(30, 85%, 75%);
+    }
+
+    #phase:nth-of-type(3) ul li {
+        background: hsl(50, 95%, 75%);
+    }
+
+    #phase:nth-of-type(4) ul li {
+        background: hsl(70, 100%, 75%);
+    }
+
+    #phase:nth-of-type(5) ul li {
+        background: hsl(90, 95%, 76%);
+    }
+
+    #phase:nth-of-type(6) ul li {
+        background: hsl(130, 95%, 75%);
+    }
+
+    #phase:nth-of-type(7) ul li {
+        background: hsl(149, 95%, 77%);
+    }
+
+    #phase:nth-of-type(8) ul li {
+        background: hsl(176, 100%, 78%);
+    }
+
+    #phase:nth-of-type(9) ul li {
+        background: hsl(204, 97%, 77%);
+    }
+
+    #phase:nth-of-type(10) ul li {
+        background: hsl(224, 100%, 81%);
+    }
+
+    #phase p {
+        margin: 0;
+    }
+
+    li {
+        margin: 0px 40px 10px 0px;
+        display: flex;
+        padding: 5px;
+        border: solid 1px black;
+        border-radius: 2px;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
+
+    p {
+        display: inline;
+        padding: 2px;
+    }
+
+    .box {
+        margin-right: 5px !important;
+        border: solid 1px black;
+        border-radius: 2px;
+    }
+</style>
+
 <body>
     <h1>Bonnes pratiques</h1>
-
+    <p>Ce document a été généré depuis le site http://vps-7f793c10.vps.ovh.net/. Il reprend les différentes bonnes
+        pratiques que vous avez sélectionnées afin de vous aider dans la création éco-responsable de votre site web.
+        Les bonnes pratiques présentées ci-dessous peuvent être traitées selon l'ordre de votre choix. Ce document est à
+        titre informatif et n'a aucune valeur juridique.
+    </p>
     <h2>Phases du projet</h2>
 
     {{#each d}}
-    <h3>{{name}}</h3>
-    <ul>
-        {{#each data}}
-        <li>
-            <p>{{etp}}</p>
-            <p>{{dif}}</p>
-        </li>
-        {{/each}}
-    </ul>
+    <div id="phase">
+        <h3>{{P}}</h3>
+        <ul>
+            {{#each data}}
+            <li>
+                <div class="space"><strong class="underline">BP :</strong>
+                    <p>{{C}}</p>
+                </div>
+                <div class="space"><strong>Indicateur : </strong>
+                    <p>{{X}}
+                </div>
+                <div class="space"><strong>Difficulté : </strong>
+                    <p>{{D}}</p>
+                    </p><strong>Priorité : </strong>
+                    <p>{{Z}}</p>
+                </div>
+                <div class="space"><strong>Impact : </strong>
+                    <p class="box">Planète : {{1}}</p>
+                    <p class="box">Personnes : {{2}}</p>
+                    <p class="box">Prospérité : {{3}}</p>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
     {{/each}}
 
-    <p>Attention : Ces étapes sont non exhaustive. Il est tout à fait possible d'en rajouter</p>
+    <p>Attention : ces étapes sont non exhaustives. Il est tout à fait possible d'en rajouter.</p>
 
 </body>
 
