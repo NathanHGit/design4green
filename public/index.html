@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Authors: Team 11 - Cours forêt !">
 
     <title>Design4Green</title>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css" media="all">
     <link rel="stylesheet" href="style.css" media="print">
+    <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
@@ -17,22 +19,27 @@
         <div id="header">
             <h1>Éco-conception</h1>
             <h2>Choisissez vos bonnes pratiques pour concevoir votre projet !</h2>
+            <div id="display">
+                <p>Affichage</p>
+                <span class="icon" id="i_lines"></span>
+                <span class="icon" id="i_blocs"></span>
+            </div>
         </div>
         <div id="sidebar">
             <div class="sticky">
                 <h2>1. Panier</h2>
                 <div class="menu active">
                     <h3>Total: 35</h3>
-                    <li class="active">STRATÉGIE (2)</li>
-                    <li>SPÉCIFICATIONS (5)</li>
-                    <li>UX/UI (12)</li>
-                    <li>CONTENUS (4)</li>
-                    <li>ARCHITECTURE (3)</li>
-                    <li>FRONTEND (5)</li>
-                    <li>BACKEND (4)</li>
-                    <li>HÉBERGEMENT (0)</li>
-                    <label for="display">Affichage</label>
-                    <input type="checkbox" id="display">
+                    <ul>
+                        <li class="active">STRATÉGIE (2)</li>
+                        <li>SPÉCIFICATIONS (5)</li>
+                        <li>UX/UI (12)</li>
+                        <li>CONTENUS (4)</li>
+                        <li>ARCHITECTURE (3)</li>
+                        <li>FRONTEND (5)</li>
+                        <li>BACKEND (4)</li>
+                        <li>HÉBERGEMENT (0)</li>
+                    </ul>
                     <button step="next">Voir mon panier →</button>
                 </div>
                 <h2>2. Récapitulatif</h2>
@@ -48,121 +55,107 @@
             </div>
         </div>
         <div id="main">
-            <div class="family" style="--test: red"><input type="checkbox" id="spec1" name="family" checked>
-                <label for="spec1">Définir
-                    et
-                    valider
-                    les besoins et les enjeux du projet afin d'anticiper les impacts</label>
-                <div class="specs">
-                    <div><input type="checkbox" s="376">
-                        <p>Les réunions sont-elles limitées au strict minimum, en privilégiant le distanciel,
-                            lorsque
+            <div class="family">
+                <h3>1. Définir et valider les besoins et les enjeux du projet afin d'anticiper les impacts</h3>
+                <div class="specs" style="max-height: 3201px;">
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
+                        <p>Les réunions sont-elles limitées au strict minimum, en privilégiant le distanciel, lorsque
                             les réunions nécessitent des déplacements physiques ?</p>
                     </div>
-                    <div><input type="checkbox" s="377">
-                        <p>Le télétravail est-il autorisé, sans limites, aux collaborateurs qui le souhaitent et
-                            dont
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
+                        <p>Le télétravail est-il autorisé, sans limites, aux collaborateurs qui le souhaitent et dont
                             l'activité le permet ?</p>
                     </div>
-                    <div><input type="checkbox" s="378">
-                        <p>Comment faire du NR plus qu'un objectif de communication ? Est-ce que des résultats
-                            concrets
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
+                        <p>L'entreprise est-elle ouverte à une démarche NR qui pourrait fédérer les énergies autour d'un
+                            projet novateur ?</p>
+                    </div>
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
+                        <p>Est-ce que les stratégies RSE et NR sont associées et systématiquement mises en oeuvre dans
+                            tous les projets ?</p>
+                    </div>
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
+                        <p>Comment faire du NR plus qu'un objectif de communication ? Est-ce que des résultats concrets
                             sont associés à la démarche NR ? (pas de Greenwashing)</p>
                     </div>
-                    <div class="unmissable"><input type="checkbox" s="379">
-                        <p>Le besoin métier est-il exprimé ?</p>
-                    </div>
-                    <div><input type="checkbox" s="380">
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
                         <p>La cible des utilisateurs (principale et secondaire) est-elle définie, pour préciser le
                             besoin métier ?</p>
                     </div>
-                    <div><input type="checkbox" s="381">
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
                         <p>Les matériels utilisateurs sont-ils identifiés ?</p>
                     </div>
-                    <div><input type="checkbox" s="382">
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
                         <p>L’ensemble des produits et services sont-ils indispensables en ligne ?
                         </p>
                     </div>
-                    <div><input type="checkbox" s="383">
-                        <p>Est ce que je peux proposer de couvrir les besoins autrement, en évitant le digital avec
-                            un
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
+                        <p>Est ce que je peux proposer de couvrir les besoins autrement, en évitant le digital avec un
                             moyen plus respectueux de l’environnement ? </p>
                     </div>
-                    <div><input type="checkbox" s="384">
-                        <p>La solution retenue est-elle la plus respectueuse de l'environnement? Sinon, ce choix
-                            est-il
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
+                        <p>La solution retenue est-elle la plus respectueuse de l'environnement? Sinon, ce choix est-il
                             justifié par le besoin utilisateur?</p>
                     </div>
-                    <div><input type="checkbox" s="385">
-                        <p>Les gains NR sont-ils évalués en préalable du projet ?</p>
-                    </div>
-                    <div><input type="checkbox" s="386">
-                        <p>Les budgets financiers pour les aspects NR du projet sont-ils évalués ?</p>
-                    </div>
-                    <div><input type="checkbox" s="387">
-                        <p>Des équipements matériels sont-ils à renouveler ou à acheter pour le projet, les
-                            équipements
-                            supplémentaires nécessaires sont-ils mis à disposition en gardant en tête les principes
-                            du
-                            NR ?</p>
-                    </div>
-                    <div><input type="checkbox" s="388">
-                        <p>Mes ressources humaines (Identifiées pour chaque phase) sont-elles disponibles ?</p>
-                    </div>
-                    <div><input type="checkbox" s="389">
-                        <p>Les objectifs NR sont-ils exposés clairement et partagés par toutes les parties
-                            prenantes,
-                            internes ou externes à l'organisation ?</p>
-                    </div>
-                    <div><input type="checkbox" s="390">
-                        <p>Les délais de mise en oeuvre sont-ils envisagés ?</p>
-                    </div>
-                    <div class="unmissable"><input type="checkbox" s="391">
-                        <p>Le besoin couvert par le service numérique s'inscrit-il dans l'un des objectifs de
-                            développement durable?</p>
-                    </div>
-                    <div><input type="checkbox" s="392">
-                        <p>L'entreprise est-elle ouverte à une démarche NR qui pourrait fédérer les énergies autour
-                            d'un
-                            projet novateur ?</p>
-                    </div>
-                    <div><input type="checkbox" s="393">
-                        <p>Est-ce que les stratégies RSE et NR sont associées et systématiquement mises en oeuvre
-                            dans
-                            tous les projets ?</p>
-                    </div>
-                    <div><input type="checkbox" s="394">
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
                         <p>Le modèle économique de ce service prend-il en compte l'éco-conception ?</p>
                     </div>
-                    <div><input type="checkbox" s="395">
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
                         <p>Les aspects performances, accessibilité, sécurité et sobriété sont-ils pris en compte
                             ensemble ?</p>
                     </div>
-                    <div><input type="checkbox" s="396">
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
+                        <p>Les gains NR sont-ils évalués en préalable du projet ?</p>
+                    </div>
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
                         <p>Le NR est-il inscrit dans la stratégie et les objectifs de l'organisation ?</p>
                     </div>
-                    <div><input type="checkbox" s="397">
-                        <p>L'attente du marché, clients, fournisseurs, partenaires est-elle en phase avec une
-                            démarche
+                    <div class="clickable"><i class="tag">Cadrage projet</i>
+                        <p>L'attente du marché, clients, fournisseurs, partenaires est-elle en phase avec une démarche
                             NR ?</p>
                     </div>
-                    <div><input type="checkbox" s="398">
+                    <div class="clickable"><i class="tag">Emergence</i>
                         <p>Les enjeux et bénéfices attendus sont-ils bien identifiés ?</p>
                     </div>
-                    <div><input type="checkbox" s="399">
+                    <div class="clickable"><i class="tag">Emergence</i>
                         <p>L'organisation est-elle en mesure de faire progresser son niveau de maturité vis à vis de
                             l’éco conception et de son périmètre, avec la réalisation de projets NR ?</p>
                     </div>
-                    <div><input type="checkbox" s="400">
+                    <div class="clickable"><i class="tag">Emergence</i>
                         <p>Un audit de l'existant est-il disponible pour en améliorer les performances NR ?</p>
                     </div>
-                    <div><input type="checkbox" s="401">
+                    <div class="clickable"><i class="tag">Emergence</i>
+                        <p>Les budgets financiers pour les aspects NR du projet sont-ils évalués ?</p>
+                    </div>
+                    <div class="clickable"><i class="tag">Emergence</i>
+                        <p>Des équipements matériels sont-ils à renouveler ou à acheter pour le projet, les équipements
+                            supplémentaires nécessaires sont-ils mis à disposition en gardant en tête les principes du
+                            NR ?</p>
+                    </div>
+                    <div class="clickable"><i class="tag">Emergence</i>
+                        <p>Mes ressources humaines (Identifiées pour chaque phase) sont-elles disponibles ?</p>
+                    </div>
+                    <div class="clickable"><i class="tag">Emergence</i>
                         <p>Les sponsors et éventuelles résistances de la démarche NR sont-ils identifiés ?</p>
+                    </div>
+                    <div class="clickable"><i class="tag">Emergence</i>
+                        <p>Les objectifs NR sont-ils exposés clairement et partagés par toutes les parties prenantes,
+                            internes ou externes à l'organisation ?</p>
+                    </div>
+                    <div class="clickable"><i class="tag">Emergence</i>
+                        <p>Les délais de mise en oeuvre sont-ils envisagés ?</p>
+                    </div>
+                    <div class="clickable"><i class="tag">Emergence</i>
+                        <p>Le besoin couvert par le service numérique s'inscrit-il dans l'un des objectifs de
+                            développement durable?</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="footer">Footer</div>
+        <div id="footer">
+            <a href="https://design4green.org/">Design4Green 2021</a>
+            <p>Équipe 11 - Cours forêt</p>
+        </div>
     </div>
 </body>
 

@@ -1,0 +1,13 @@
+F : Famille
+R : Recommandation (catégorie)
+Id : Id
+T : Thématique
+C : Critères
+D : Difficulté
+I : Incontournable
+P : Etapes / Phase
+X : Indicateurs
+Z : Priorité
+1 : Planete
+2 : People
+3 : Prosperité

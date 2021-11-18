@@ -27,7 +27,7 @@ app.get('/*', function (req, res, next) {
 });
 
 app.get('/family', function (req, res) {
-    let id = req.query.id.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    let id = req.query.id;
     if (id !== '') {
         console.log(id);
         res.send(JSON.stringify(db[id]));
@@ -43,5 +43,5 @@ app.listen(PORT, () => {
 });
 
 function getBdd() {
-    return JSON.parse(fs.readFileSync('data.json'));
+    return JSON.parse(fs.readFileSync('bdd.json'));
 }

@@ -44,13 +44,26 @@ p {
     color: var(--headings);
 }
 
+#sidebar ul {
+    padding: 0;
+}
+
+#sidebar h2 {
+    margin-bottom: 20px;
+}
+
 #sidebar > div.sticky {
     top: 30px;
     position: sticky;
 }
 
+#sidebar div.menu {
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
 #sidebar div.menu:not(.active) {
-    display: none;
+    max-height: 0;
 }
 
 #sidebar li {
@@ -80,12 +93,10 @@ p {
     user-select: none;
 }
 
-.family label {
-    display: block;
+.family h3 {
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
-    transition: all 0.25s;
     width: fit-content;
     color: var(--headings);
 }
@@ -94,23 +105,16 @@ p {
     display: none;
 }
 
-.family > input[type='checkbox']:checked ~ label {
-    margin: 20px 10px 30px 10px;
-    font-size: 20px;
-}
-
-.family > input[type='checkbox']:checked ~ .specs {
-    max-height: fit-content;
-}
-
 .specs {
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     max-height: 0;
+    transition: max-height 0.5s ease-in-out;
 }
 
 .specs > div {
+    position: relative;
     margin: 10px;
     padding: 20px;
     background-color: var(--bg);
@@ -119,8 +123,25 @@ p {
     border-radius: 7.5px;
 }
 
-.specs div:not(.unmissable) {
+.specs > div.clickable {
     cursor: pointer;
+}
+
+.specs > div.unmissable {
+    border: 3px solid rgb(197, 57, 57);
+    cursor: not-allowed;
+}
+
+.specs i {
+    display: block;
+    font-style: normal;
+    color: var(--text);
+    padding: 5px;
+    background-color: green;
+    margin: 5px 5px 5px 0;
+    width: fit-content;
+    font-size: 14px;
+    border-radius: 5px;
 }
 
 .specs p {
@@ -128,9 +149,36 @@ p {
     color: var(--text);
 }
 
-.specs > div.unmissable {
-    border: 3px solid rgb(235, 42, 42);
-    cursor: not-allowed;
+.specs span {
+    position: absolute;
+    left: calc(100% - 5px);
+    top: 5px;
+    height: 25px;
+    width: 25px;
+    background-color: var(--headings);
+    transform: translate(-50%, -50%);
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+.specs span::before,
+.specs span::after {
+    position: absolute;
+    content: '';
+    height: 3px;
+    width: 15px;
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    background-color: var(--bg-panel);
+}
+
+.specs span::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.specs span::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 li.active {
@@ -144,6 +192,76 @@ li.active {
 #footer {
     background-color: var(--headings);
     grid-column: 1/-1;
-    text-align: center;
     padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#footer a {
+    color: var(--bg);
+}
+
+#footer > * {
+    margin: 0 100px;
+}
+
+#display {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#display p {
+    margin-right: 10px;
+}
+
+#i_blocs,
+#i_lines {
+    background-color: var(--bg);
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    transition: background-color 0.25s;
+    cursor: pointer;
+}
+
+#i_blocs:hover,
+#i_lines:hover {
+    background-color: var(--bg-panel);
+}
+
+#i_blocs::before,
+#i_blocs::after {
+    position: absolute;
+    content: '';
+    background-color: var(--headings);
+    height: 3px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+#i_blocs::after {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+#i_lines::after,
+#i_lines::before {
+    position: absolute;
+    content: '';
+    background-color: var(--headings);
+    height: 4px;
+    width: 100%;
+    left: 0;
+}
+
+#i_lines::before {
+    bottom: 12px;
+}
+
+#i_lines::after {
+    bottom: 4px;
 }
