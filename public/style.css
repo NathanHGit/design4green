@@ -1,5 +1,5 @@
 :root {
-    --width: 100%;
+    --width: calc(100% / 4 - 60px);
     --bg: #283044;
     --bg-panel: #36405a;
     --headings: #afd8f1;
@@ -22,7 +22,7 @@ p {
 #container {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 50px auto 1fr 50px;
+    grid-template-columns: 50px auto 50px 1fr 50px;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
 }
@@ -35,8 +35,12 @@ p {
 }
 
 #header h1 {
-    font-size: 50px;
+    font-size: min(50px, 10vw);
     margin-bottom: 30px;
+}
+
+#header h2 {
+    font-size: min(24px, 6vw);
 }
 
 #sidebar {
@@ -102,12 +106,13 @@ p {
 }
 
 #main {
-    padding: 0px 0px 25px 50px;
+    grid-column: 4;
+    margin: -25px 0;
 }
 
 .family {
     background-color: var(--bg-panel);
-    padding: 20px 40px 10px 40px;
+    padding: 20px 40px 30px 40px;
     margin: 25px 0;
     user-select: none;
 }
@@ -118,7 +123,7 @@ p {
     font-weight: bold;
     width: fit-content;
     color: var(--headings);
-    margin: 20px 0 30px 0;
+    margin: 20px 0 10px 0;
 }
 
 .family > input[type='checkbox'] {
@@ -169,6 +174,7 @@ p {
 }
 
 .specs p {
+    display: block;
     padding-top: 7.5px;
     font-size: 15px;
     color: var(--text);
@@ -318,6 +324,7 @@ p {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-top: 40px;
 }
 
 #display p {
@@ -372,4 +379,23 @@ p {
 
 #i_lines::after {
     bottom: 4px;
+}
+@media screen and (max-device-width: 650px) {
+    #container {
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 20px 1fr 20px;
+    }
+
+    #main {
+        grid-column: 2;
+    }
+
+    #sidebar {
+        grid-column: 2;
+        margin-bottom: 50px;
+    }
+
+    #display {
+        display: none;
+    }
 }

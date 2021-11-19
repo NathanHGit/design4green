@@ -10,7 +10,6 @@ let li = null;
 let table = null;
 
 function test() {
-    // window.open('/pdf?data=' + JSON.stringify(table));
     fetch('/pdf', {
         method: 'post',
         responseType: 'blob',
@@ -30,7 +29,7 @@ function app() {
     const sidebar = document.querySelector('#sidebar');
     const menu = document.querySelectorAll('.menu');
     const buttons = sidebar.querySelectorAll('button[step]');
-    const icons = document.querySelectorAll('.icon');
+    const display = document.querySelector('#display');
     li = Array.from(document.querySelector('#sidebar').querySelectorAll('li'));
     total = sidebar.querySelector('h3');
     totalVal = 35;
@@ -51,7 +50,9 @@ function app() {
                 httpRequest('STRATEGIE');
             } else if (screenId == 1) {
                 setFamily(JSON.parse(JSON.stringify(specs)));
+                display.style.display = 'flex';
             } else if (screenId == 2) {
+                display.style.display = 'none';
                 let data = [];
                 for (const [key, value] of Object.entries(specs)) {
                     data = data.concat(value);
@@ -69,6 +70,7 @@ function app() {
 
     li.forEach((element) => {
         element.onclick = function () {
+            if (this.classList.contains('active')) return;
             activeLi.classList.remove('active');
             element.classList.add('active');
             activeLi = element;
@@ -76,9 +78,11 @@ function app() {
         };
     });
 
-    for (let i = 0; i < icons.length; i++) {
-        icons[i].onclick = function () {
-            document.documentElement.style.setProperty('--width', i ? 'calc(100% / 4 - 60px)' : '100%');
+    for (let i = 0; i < display.childElementCount; i++) {
+        display.children[i].onclick = function () {
+            if (display.children[i].nodeName == 'SPAN') {
+                document.documentElement.style.setProperty('--width', i - 1 ? '100%' : 'calc(100% / 4 - 60px)');
+            }
         };
     }
 }

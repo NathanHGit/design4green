@@ -68,9 +68,9 @@ app.post('/pdf', function (req, res) {
         });
 });
 
-// app.get('*', function (req, res) {
-//     res.redirect('/');
-// });
+app.get('*', function (req, res) {
+    res.redirect('/');
+});
 
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`);
