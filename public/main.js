@@ -141,6 +141,11 @@ function setFamily(data) {
                 let val = 0;
                 if (screenId == 0) {
                     spec.classList.add('clickable');
+                    for (let i = 0; i < specs[getTxt(activeLi.innerHTML)].length; i++) {
+                        if (specs[getTxt(activeLi.innerHTML)][i].ID === value[j].ID) {
+                            spec.classList.add('border');
+                        }
+                    }
                     spec.onclick = function () {
                         val = getValue(activeLi.innerHTML);
                         if (!spec.classList.contains('border')) {
@@ -211,48 +216,39 @@ function setPdf(data) {
         h3.innerHTML = data[j].P;
         div.appendChild(h3);
 
-        let ul = document.createElement('ul');
         value = data[j].data;
         for (let i = 0; i < value.length; i++) {
-            let li = document.createElement('li');
             let div2 = document.createElement('div');
-            div2.classList.add('space');
+            let p = document.createElement('p');
             let strong = document.createElement('strong');
             strong.innerHTML = 'BP : ';
-            div2.appendChild(strong);
-            let p = document.createElement('p');
-            p.innerHTML = value[i].C;
+            p.appendChild(strong);
+            p.innerHTML += value[i].C;
             div2.appendChild(p);
-            li.appendChild(div2);
 
-            div2 = document.createElement('div');
-            div2.classList.add('space');
+            p = document.createElement('p');
             strong = document.createElement('strong');
             strong.innerHTML = 'Indicateur : ';
-            div2.appendChild(strong);
-            p = document.createElement('p');
-            p.innerHTML = value[i].X;
+            p.appendChild(strong);
+            p.innerHTML += value[i].X;
             div2.appendChild(p);
-            li.appendChild(div2);
 
-            div2 = document.createElement('div');
-            div2.classList.add('space');
+            let div3 = document.createElement('div');
+            p = document.createElement('p');
             strong = document.createElement('strong');
             strong.innerHTML = 'Difficulté : ';
-            div2.appendChild(strong);
+            p.appendChild(strong);
+            p.innerHTML += value[i].D;
+            div3.appendChild(p);
             p = document.createElement('p');
-            p.innerHTML = value[i].D;
-            div2.appendChild(p);
             strong = document.createElement('strong');
             strong.innerHTML = 'Priorité : ';
-            div2.appendChild(strong);
-            p = document.createElement('p');
-            p.innerHTML = value[i].Z;
-            div2.appendChild(p);
-            li.appendChild(div2);
+            p.appendChild(strong);
+            p.innerHTML += value[i].Z;
+            div3.appendChild(p);
 
-            div2 = document.createElement('div');
-            div2.classList.add('space');
+            div2.appendChild(div3);
+
             strong = document.createElement('strong');
             strong.innerHTML = 'Impact : ';
             div2.appendChild(strong);
@@ -271,11 +267,8 @@ function setPdf(data) {
             p.classList.add('box');
             p.innerHTML = 'Prospérité : ' + value[i][3];
             div2.appendChild(p);
-            li.appendChild(div2);
-
-            ul.appendChild(li);
+            div.appendChild(div2);
         }
-        div.appendChild(ul);
         main.appendChild(div);
     }
 }
